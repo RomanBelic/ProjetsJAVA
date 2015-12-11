@@ -2,7 +2,7 @@ package com.itparis.b3.associations.beans;
 
 public class User {
 	
-	private String idUser;
+	private int idUser;
 	private int    typeUser;
 	private String idAssociation;
 	private String Nom;
@@ -36,10 +36,10 @@ public class User {
 	public void setTelephone(String telephone) {
 		Telephone = telephone;
 	}
-	public String getIdUser() {
+	public int getIdUser() {
 		return idUser;
 	}
-	public void setIdUser(String idUser) {
+	public void setIdUser(int idUser) {
 		this.idUser = idUser;
 	}
 	public int getTypeUser() {

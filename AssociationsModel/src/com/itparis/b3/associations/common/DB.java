@@ -1,6 +1,6 @@
 package com.itparis.b3.associations.common;
 
-public class DATABASE {
+public class DB {
 	
 	public static String DBNULLVALUE = "NULL";
 	public static String DBNAME = "dbassociations";

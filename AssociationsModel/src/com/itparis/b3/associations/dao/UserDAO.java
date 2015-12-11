@@ -33,7 +33,7 @@ public class UserDAO {
 	        while (rs.next()) {
 	            User u = new User ();
 	            
-	            u.setIdUser(rs.getString("idUser"));
+	            u.setIdUser(rs.getInt("idUser"));
 	            u.setTypeUser(rs.getInt("TypeUser"));
 	            u.setLibelleUser(rs.getString("UserLibelle"));
 	            u.setIdAssociation(rs.getString("idAssoc"));
@@ -55,7 +55,7 @@ public class UserDAO {
 		return lstUser;
 	}
 	
-	public User getUserByID (String id) {
+	public User getUserByID (int id) {
 		Connection con = null;
 		Statement st = null;
 		ResultSet rs = null;
@@ -66,7 +66,7 @@ public class UserDAO {
 		   		     " t.Libelle as UserLibelle " +
 		             " From utilisateurs u " +
 		             " LEFT JOIN typeutilisateur t ON u.typeUtilisateur = t.idType " +
-		   		     " Where 1=1 AND u.idUtilisateur = '" + id + "'";
+		   		     " Where 1=1 AND u.idUtilisateur = " + id + "";
 		System.out.println(req);
 		User u = new User ();
 		try {
@@ -74,7 +74,7 @@ public class UserDAO {
 		    st = con.createStatement();
 		    rs = st.executeQuery(req);
 		    while (rs.next()) {		            
-		            u.setIdUser(rs.getString("idUser"));
+		            u.setIdUser(rs.getInt("idUser"));
 		            u.setTypeUser(rs.getInt("TypeUser"));
 		            u.setLibelleUser(rs.getString("UserLibelle"));
 		            u.setIdAssociation(rs.getString("idAssoc"));

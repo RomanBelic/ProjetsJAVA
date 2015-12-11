@@ -4,7 +4,7 @@ public class Authentification {
 	
 	private String Log;
 	private String Pass;
-	private String idUser;
+	private int    idUser;
 	
 	public String getLog() {
 		return Log;
@@ -18,10 +18,10 @@ public class Authentification {
 	public void setPass(String pass) {
 		Pass = pass;
 	}
-	public String getIdUser() {
+	public int getIdUser() {
 		return idUser;
 	}
-	public void setIdUser(String idUser) {
+	public void setIdUser(int idUser) {
 		this.idUser = idUser;
 	}
 	
