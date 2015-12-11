@@ -22,7 +22,8 @@ public class TestQueries {
 		
 		boolean  bool =  AuthMetier.CheckAuthentification("test", "test");
 		System.out.println(bool);
-		
-
+	     
+		int test = ReqMetier.ExecuteParameteredUpdate("utilisateurs", paramsTable, paramsWhere);
+   
 	}
 }

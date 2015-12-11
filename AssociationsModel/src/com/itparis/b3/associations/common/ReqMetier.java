@@ -33,7 +33,7 @@ public class ReqMetier {
 		return rows;
 	}
 	
-	public static int ExecutePreparedQuery(String req, HashMap<Integer,String> params) {
+	public static int ExecutePreparedUpdate(String req, HashMap<Integer,String> params) {
 		int rows = 0;
 		Connection con = null;
 		PreparedStatement st = null;
@@ -59,26 +59,36 @@ public class ReqMetier {
 		return rows;
 	}
 	
-	public int ExecutePreparedUpdateQuery (String table, HashMap<Integer,String>params){
+	public static int ExecuteParameteredUpdate (String table, HashMap<String,String>paramsTable, 
+			                             HashMap<String,String>paramsWhere){
 		int rows = 0;
 		String req = "Update " + table + " SET ";
 		Connection con = null;
-		PreparedStatement st = null;
+		Statement st = null;
 		
 		try {
 			con= Connexion.getConnection();
-			st = con.prepareStatement(req);
-		
-		
-		for (Map.Entry<Integer, String> entry : params.entrySet()){
-
-			
+			st = con.createStatement();
+			if (paramsTable.size()> 0){
+				for (Map.Entry<String, String> entry : paramsTable.entrySet()){
+				   req+= entry.getKey()+ " = " + entry.getValue()+ ",";
+				}
+				int index = req.lastIndexOf(",");
+				req.substring(index, req.length());
+		    }
+		   
+		    req+= " Where 1=1 ";
+		    if (paramsWhere.size() > 0) {
+				for (Map.Entry<String, String> entry : paramsWhere.entrySet()){
+					   req+= entry.getKey() + " " + entry.getValue()+ " ";
+				}
+		    }
+		    rows = st.executeUpdate(req);
+		    
 		}
-		
-		}
-		
-		
-		return 0;
+		catch (Exception e){}
+		System.out.println(req);
+		return rows;
 	}
 	
 	
