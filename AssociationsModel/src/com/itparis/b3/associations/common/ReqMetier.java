@@ -1,9 +1,6 @@
 package com.itparis.b3.associations.common;
-import java.sql.Array;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.HashMap;
 import java.util.Map;
@@ -59,36 +56,43 @@ public class ReqMetier {
 		return rows;
 	}
 	
-	public static int ExecuteParameteredUpdate (String table, HashMap<String,String>paramsTable, 
+	public static void ExecuteParameteredUpdate (String table, HashMap<String,String>paramsTable, 
 			                             HashMap<String,String>paramsWhere){
 		int rows = 0;
 		String req = "Update " + table + " SET ";
 		Connection con = null;
 		Statement st = null;
-		
 		try {
-			con= Connexion.getConnection();
+			con = Connexion.getConnection();
 			st = con.createStatement();
-			if (paramsTable.size()> 0){
+			
+			if (paramsTable.size() > 0){
 				for (Map.Entry<String, String> entry : paramsTable.entrySet()){
-				   req+= entry.getKey()+ " = " + entry.getValue()+ ",";
+				   req+= entry.getKey()+ " = " + entry.getValue()+ ", ";
 				}
 				int index = req.lastIndexOf(",");
-				req.substring(index, req.length());
+				req = req.substring(0, index);
 		    }
-		   
+			
 		    req+= " Where 1=1 ";
+		    
 		    if (paramsWhere.size() > 0) {
 				for (Map.Entry<String, String> entry : paramsWhere.entrySet()){
 					   req+= entry.getKey() + " " + entry.getValue()+ " ";
 				}
 		    }
-		    rows = st.executeUpdate(req);
-		    
+		     st.executeUpdate(req);
 		}
+		catch (Exception e){
+			e.printStackTrace();
+			e.getMessage();
+		}
+		try {
+			if (st != null) st.close();
+			if (con != null)con.close();
+    	}
 		catch (Exception e){}
-		System.out.println(req);
-		return rows;
+		//return rows;
 	}
 	
 	

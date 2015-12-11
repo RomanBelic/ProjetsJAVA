@@ -1,29 +1,27 @@
 package com.itparis.b3.associations.test;
 
-import java.lang.reflect.Array;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.HashMap;
 
-import com.itparis.b3.associations.beans.User;
-import com.itparis.b3.associations.common.CustomError;
+import com.itparis.b3.associations.common.DATABASE;
 import com.itparis.b3.associations.common.ReqMetier;
-import com.itparis.b3.associations.metier.AuthMetier;
-import com.itparis.b3.associations.metier.UserMetier;
 
 public class TestQueries {
 	
 	public static void main (String[] args) throws SQLException{
 
-		String code = "test chain";
-		code = ""+code.hashCode();
-		System.out.println(code);
+		HashMap<String,String> paramsTable = new HashMap<String,String>();
+		paramsTable.put("nomUtilisateur", "'idUser3'");
+		paramsTable.put("typeUtilisateur", "3");
 		
-		boolean  bool =  AuthMetier.CheckAuthentification("test", "test");
-		System.out.println(bool);
-	     
-		int test = ReqMetier.ExecuteParameteredUpdate("utilisateurs", paramsTable, paramsWhere);
-   
+		
+		HashMap<String,String> paramsWhere = new HashMap<String,String>();
+		paramsWhere.put("AND", "idUtilisateur='idUser1'");
+		
+	    ReqMetier.ExecuteParameteredUpdate(DATABASE.Tables.Utilisateurs, paramsTable, paramsWhere);
+        //System.out.println(test);
+        
+       // ReqMetier.ExecuteUpdate("Update "+DATABASE.Tables.Utilisateurs+" SET nomUtilisateur = 'nomUtilisateur'");
+		
 	}
 }

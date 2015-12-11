@@ -3,7 +3,6 @@ package com.itparis.b3.associations.metier;
 import java.util.ArrayList;
 
 import com.itparis.b3.associations.beans.User;
-import com.itparis.b3.associations.common.CustomError;
 import com.itparis.b3.associations.dao.UserDAO;
 
 public class UserMetier {

@@ -3,7 +3,6 @@ package com.itparis.b3.associations.dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.Statement;
 
 import com.itparis.b3.associations.bin.Connexion;
 

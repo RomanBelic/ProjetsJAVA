@@ -29,7 +29,6 @@ public final class Connexion  {
     	Connection con = null;
         try {
             con = DriverManager.getConnection(driver + "//" + host + "/" + db , log, pass);
-            System.out.println("connection is opened");
         }
         catch (Exception e)
         {

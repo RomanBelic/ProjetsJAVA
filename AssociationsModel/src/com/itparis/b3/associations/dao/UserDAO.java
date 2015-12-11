@@ -1,13 +1,11 @@
 package com.itparis.b3.associations.dao;
 import java.sql.Connection;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
 import com.itparis.b3.associations.beans.User;
 import com.itparis.b3.associations.bin.Connexion;
-import com.itparis.b3.associations.common.CustomError;
 
 
 public class UserDAO {
