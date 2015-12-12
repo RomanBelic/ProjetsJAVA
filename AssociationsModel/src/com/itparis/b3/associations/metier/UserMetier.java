@@ -15,6 +15,7 @@ public class UserMetier {
 				filtre = " AND u.idAssociation = "+ idAssoc +" ";
 				lstUser = UserDAO.class.newInstance().getListUser(filtre);
 			} catch (InstantiationException | IllegalAccessException e) {}
+			
 		}
 		return lstUser;
 	}

@@ -23,6 +23,5 @@ public class Authentification {
 	}
 	public void setIdUser(int idUser) {
 		this.idUser = idUser;
-	}
-	
+	}	
 }

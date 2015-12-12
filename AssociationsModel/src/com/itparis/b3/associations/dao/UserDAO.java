@@ -10,6 +10,26 @@ import com.itparis.b3.associations.bin.Connexion;
 
 public class UserDAO {
 	
+	private User RemplirUser (ResultSet rs){
+		User u = new User ();
+		try {
+	        u.setIdUser(rs.getInt("idUser"));
+	        u.setTypeUser(rs.getInt("TypeUser"));
+	        u.setLibelleUser(rs.getString("UserLibelle"));
+	        u.setIdAssociation(rs.getString("idAssoc"));
+	        u.setAdresse(rs.getString("Adresse"));
+	        u.setTelephone(rs.getString("Telephone"));
+	        u.setNom(rs.getString("Nom"));
+	        u.setPrenom(rs.getString("Prenom"));
+		}
+		catch (Exception e){
+			e.getMessage();
+			e.printStackTrace();
+		}
+		
+		return u;
+	}
+	
 	public ArrayList <User> getListUser (String filtre)
 	{
 		Connection con = null;
@@ -31,8 +51,8 @@ public class UserDAO {
 	    	st = con.createStatement();
 	        rs = st.executeQuery(req);
 	        while (rs.next()) {
-	            User u = new User ();
-	            
+	            //User u = new User ();
+	            /*
 	            u.setIdUser(rs.getInt("idUser"));
 	            u.setTypeUser(rs.getInt("TypeUser"));
 	            u.setLibelleUser(rs.getString("UserLibelle"));
@@ -41,7 +61,8 @@ public class UserDAO {
 	            u.setTelephone(rs.getString("Telephone"));
 	            u.setNom(rs.getString("Nom"));
 	            u.setPrenom(rs.getString("Prenom"));
- 
+                 */
+	            User u = RemplirUser (rs);
 	            lstUser.add(u);
 	        }
 	    } 
@@ -74,7 +95,7 @@ public class UserDAO {
 		    st = con.createStatement();
 		    rs = st.executeQuery(req);
 		    while (rs.next()) {		            
-		            u.setIdUser(rs.getInt("idUser"));
+		            /*u.setIdUser(rs.getInt("idUser"));
 		            u.setTypeUser(rs.getInt("TypeUser"));
 		            u.setLibelleUser(rs.getString("UserLibelle"));
 		            u.setIdAssociation(rs.getString("idAssoc"));
@@ -82,6 +103,8 @@ public class UserDAO {
 		            u.setTelephone(rs.getString("Telephone"));
 		            u.setNom(rs.getString("Nom"));
 		            u.setPrenom(rs.getString("Prenom"));
+		            */
+		    	u = RemplirUser (rs);
 	           	}
 		}
 		catch (Exception e){}
