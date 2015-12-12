@@ -12,9 +12,9 @@ public class DB {
 		public static final String ParticipantsEvents = "participantsevents";
 		public static final String FicheParticipant = "ficheparticipant";
 		public static final String Authentification = "authentification";
-		public static final String Events = "associationevents";
+		public static final String AssocEvents = "associationevents";
 		public static final String Association = "association";
-		public static final String DescriptionAssoc = "assocdesc";
+		public static final String AssocDesc = "associationdescription";
 	}
 	
 	public static class Queries {
