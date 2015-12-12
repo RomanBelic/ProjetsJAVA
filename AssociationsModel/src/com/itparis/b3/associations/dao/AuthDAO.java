@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
 import com.itparis.b3.associations.bin.Connexion;
+import com.itparis.b3.associations.common.DB.*;
 
 public class AuthDAO {
 	
@@ -13,8 +14,8 @@ public class AuthDAO {
 		Connection con = null;
 		PreparedStatement st = null;
 		ResultSet rs = null;
-		String query = "Select Login, MDP From authentification Where Login = ? and MDP = ? ";
-		
+        String query = Queries.GetLoginPassQuery;
+        
 		try {
 			con = Connexion.getConnection();
 			st = con.prepareStatement(query);
@@ -24,7 +25,10 @@ public class AuthDAO {
 		    rs = st.executeQuery();
 		    check = rs.next();
 		}
-		catch (Exception e) {}
+		catch (Exception e) {
+			e.getMessage();
+			e.printStackTrace();
+		}
 	    try {
 	    	if (st != null) st.close();
 	    	if (con != null) con.close();

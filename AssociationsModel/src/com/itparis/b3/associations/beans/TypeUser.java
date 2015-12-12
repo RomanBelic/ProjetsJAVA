@@ -2,14 +2,14 @@ package com.itparis.b3.associations.beans;
 
 public class TypeUser {
 	
-	private int    idType;
+	private int    id;
 	private String Libelle;
 	
-	public int getIdType() {
-		return idType;
+	public int getId() {
+		return id;
 	}
-	public void setIdType(int idType) {
-		this.idType = idType;
+	public void setId(int idType) {
+		this.id = idType;
 	}
 	public String getLibelle() {
 		return Libelle;

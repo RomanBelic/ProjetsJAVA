@@ -6,21 +6,22 @@ import java.util.ArrayList;
 
 import com.itparis.b3.associations.beans.User;
 import com.itparis.b3.associations.bin.Connexion;
-
+import com.itparis.b3.associations.common.DB.*;
 
 public class UserDAO {
 	
 	private User RemplirUser (ResultSet rs){
 		User u = new User ();
 		try {
-	        u.setIdUser(rs.getInt("idUser"));
-	        u.setTypeUser(rs.getInt("TypeUser"));
-	        u.setLibelleUser(rs.getString("UserLibelle"));
-	        u.setIdAssociation(rs.getString("idAssoc"));
-	        u.setAdresse(rs.getString("Adresse"));
-	        u.setTelephone(rs.getString("Telephone"));
-	        u.setNom(rs.getString("Nom"));
-	        u.setPrenom(rs.getString("Prenom"));
+	        u.setId(rs.getInt("id"));
+	        u.setAdresse(rs.getString("adrUtilisateur"));
+	        u.setTelephone(rs.getString("telUtilisateur"));
+	        u.setNom(rs.getString("nomUtilisateur"));
+	        u.setPrenom(rs.getString("prenomUtilisateur"));
+	        u.type.setId(rs.getInt("idType"));
+	        u.type.setLibelle(rs.getString("Libelle")); 
+	        u.assoc.setId(rs.getInt("idAssociation")); 
+	        u.assoc.setLibelle(rs.getString("LibelleAssociation")); 
 		}
 		catch (Exception e){
 			e.getMessage();
@@ -37,36 +38,22 @@ public class UserDAO {
 		ResultSet rs = null;
 		ArrayList <User> lstUser = new  ArrayList<User>();
 		
-	    String req = " Select u.nomUtilisateur as Nom, u.prenomUtilisateur as Prenom, " +
-	    		     " u.adrUtilisateur as Adresse, u.telUtilisateur as Telephone, " + 
-	    		     " u.idAssociation as idAssoc, u.typeUtilisateur as TypeUser, " +
-	    		     " u.idUtilisateur as idUser, " + 
-	    		     " t.Libelle as UserLibelle " +
-	                 " From utilisateurs u " +
-	                 " LEFT JOIN typeutilisateur t ON u.typeUtilisateur = t.idType " +
-	    		     " Where 1=1 " + filtre;
+	    String req = Queries.GetUserQuery + filtre;
 	    req += " Order By nomUtilisateur ASC ";
+	    
 	    try {
 	    	con = Connexion.getConnection();
 	    	st = con.createStatement();
 	        rs = st.executeQuery(req);
 	        while (rs.next()) {
-	            //User u = new User ();
-	            /*
-	            u.setIdUser(rs.getInt("idUser"));
-	            u.setTypeUser(rs.getInt("TypeUser"));
-	            u.setLibelleUser(rs.getString("UserLibelle"));
-	            u.setIdAssociation(rs.getString("idAssoc"));
-	            u.setAdresse(rs.getString("Adresse"));
-	            u.setTelephone(rs.getString("Telephone"));
-	            u.setNom(rs.getString("Nom"));
-	            u.setPrenom(rs.getString("Prenom"));
-                 */
 	            User u = RemplirUser (rs);
 	            lstUser.add(u);
 	        }
 	    } 
-	    catch (Exception e){}
+	    catch (Exception e){
+			e.getMessage();
+			e.printStackTrace();
+	    }
 	    try {
 	    	if (rs != null) rs.close();
 	    	if (st != null) st.close();
@@ -76,38 +63,26 @@ public class UserDAO {
 		return lstUser;
 	}
 	
-	public User getUserByID (int id) {
+	public User getUser (String filtre) {
 		Connection con = null;
 		Statement st = null;
 		ResultSet rs = null;
-		String req = " Select u.nomUtilisateur as Nom, u.prenomUtilisateur as Prenom, " +
-		   		     " u.adrUtilisateur as Adresse, u.telUtilisateur as Telephone, " + 
-		   		     " u.idAssociation as idAssoc, u.typeUtilisateur as TypeUser, " +
-		   		     " u.idUtilisateur as idUser, " + 
-		   		     " t.Libelle as UserLibelle " +
-		             " From utilisateurs u " +
-		             " LEFT JOIN typeutilisateur t ON u.typeUtilisateur = t.idType " +
-		   		     " Where 1=1 AND u.idUtilisateur = " + id + "";
-		System.out.println(req);
+		
+		String req = Queries.GetUserQuery + filtre;
+		
 		User u = new User ();
 		try {
 		    con = Connexion.getConnection();
 		    st = con.createStatement();
 		    rs = st.executeQuery(req);
 		    while (rs.next()) {		            
-		            /*u.setIdUser(rs.getInt("idUser"));
-		            u.setTypeUser(rs.getInt("TypeUser"));
-		            u.setLibelleUser(rs.getString("UserLibelle"));
-		            u.setIdAssociation(rs.getString("idAssoc"));
-		            u.setAdresse(rs.getString("Adresse"));
-		            u.setTelephone(rs.getString("Telephone"));
-		            u.setNom(rs.getString("Nom"));
-		            u.setPrenom(rs.getString("Prenom"));
-		            */
 		    	u = RemplirUser (rs);
 	           	}
 		}
-		catch (Exception e){}
+		catch (Exception e){
+			e.getMessage();
+			e.printStackTrace();
+		}
 	    try {
 	    	if (rs != null) rs.close();
 	    	if (st != null) st.close();
