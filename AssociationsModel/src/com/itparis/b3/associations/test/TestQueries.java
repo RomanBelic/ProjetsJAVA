@@ -7,6 +7,7 @@ import java.util.HashMap;
 import com.itparis.b3.associations.beans.User;
 import com.itparis.b3.associations.common.DB;
 import com.itparis.b3.associations.common.ReqMetier;
+import com.itparis.b3.associations.common.Table;
 import com.itparis.b3.associations.common.Utilities;
 import com.itparis.b3.associations.metier.UserMetier;
 
@@ -14,11 +15,8 @@ public class TestQueries {
 	
 	public static void main (String[] args) throws SQLException{
 		
-		ArrayList<User> lstU = UserMetier.getUsers(0, 2);
-		System.out.println(lstU.toString());
-		
-		User u = UserMetier.getUser(1);
-		System.out.println(u.toString());
+		System.out.println(DB.Utilisateurs);
+		System.out.println(DB.MakeJoin("inner", DB.Utilisateurs, DB.TypeUtilisateurs, "idType", "id"));
 
 	}
 }

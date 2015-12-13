@@ -41,6 +41,6 @@ public final class Connexion  {
     public static Connection getConnection ()
     {
     	return instance.CreateConnection();
-    }
+    }  
     
 }

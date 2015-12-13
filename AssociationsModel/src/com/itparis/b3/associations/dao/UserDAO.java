@@ -39,7 +39,6 @@ public class UserDAO {
 		ArrayList <User> lstUser = new  ArrayList<User>();
 		
 	    String req = Queries.GetUserQuery + filtre;
-	    req += " Order By nomUtilisateur ASC ";
 	    
 	    try {
 	    	con = Connexion.getConnection();
