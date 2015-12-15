@@ -7,6 +7,10 @@ public class Association {
 	
 	public AssociationDesc desc;
 	
+	public Association () {
+		desc = new AssociationDesc();
+	}
+	
 	public int getId() {
 		return id;
 	}

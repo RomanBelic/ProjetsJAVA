@@ -27,10 +27,8 @@ public class ReqMetier {
 			e.printStackTrace();
 		}
 		try {
-			if (st != null)
-				st.close();
-			if (con != null)
-				con.close();
+			if (st != null) st.close();
+			if (con != null)con.close();
 		} catch (Exception e) {
 		}
 		return rows;
@@ -56,10 +54,8 @@ public class ReqMetier {
 			e.printStackTrace();
 		}
 		try {
-			if (st != null)
-				st.close();
-			if (con != null)
-				con.close();
+			if (st != null) st.close();
+			if (con != null)con.close();
 		} catch (Exception e) {
 		}
 		return rows;
@@ -96,10 +92,8 @@ public class ReqMetier {
 			e.getMessage();
 		}
 		try {
-			if (st != null)
-				st.close();
-			if (con != null)
-				con.close();
+			if (st != null) st.close();
+			if (con != null)con.close();
 		} catch (Exception e) {
 		}
 		return rows;
@@ -125,10 +119,8 @@ public class ReqMetier {
 			e.getMessage();
 		}
 		try {
-			if (st != null)
-				st.close();
-			if (con != null)
-				con.close();
+			if (st != null) st.close();
+			if (con != null)con.close();
 		} catch (Exception e) {	
 		}
 		return rows;
@@ -169,10 +161,8 @@ public class ReqMetier {
 			e.printStackTrace();
 		}
 		try {
-			if (st != null)
-				st.close();
-			if (con != null)
-				con.close();
+			if (st != null) st.close();
+			if (con != null)con.close();
 		} catch (Exception e) {	
 		}
 		return rows;

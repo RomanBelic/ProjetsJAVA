@@ -16,11 +16,9 @@ import com.itparis.b3.associations.metier.UserMetier;
 public class TestQueries {
 	
 	public static void main (String[] args) throws SQLException{
+	
 		
-		System.out.println(DB.Utilisateurs);
-		System.out.println(DB.MakeJoin("inner", DB.Utilisateurs, DB.TypeUtilisateurs, "idType", "id"));
-		
-System.out.println(DB.Queries.GetUserQuery);
+System.out.println(DB.Queries.GetAssociationQuery);
 		
 		
 		

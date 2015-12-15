@@ -2,17 +2,10 @@ package com.itparis.b3.associations.beans;
 
 public class ParticipantEvents {
 	
-	private int id;
 	private int idAssoc;
     private int idUser;
     private int presence;
     
-	public int getId() {
-		return id;
-	}
-	public void setId(int id) {
-		this.id = id;
-	}
 	public int getIdAssoc() {
 		return idAssoc;
 	}

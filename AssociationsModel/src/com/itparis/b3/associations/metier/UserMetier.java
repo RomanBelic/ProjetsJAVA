@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import com.itparis.b3.associations.beans.User;
 import com.itparis.b3.associations.dao.UserDAO;
+import com.itparis.b3.associations.common.DB;
 import com.itparis.b3.associations.common.Utilities;
 
 public class UserMetier {
@@ -12,10 +13,11 @@ public class UserMetier {
 		ArrayList<User> lstUser = new ArrayList<User>();
 		String filtre = "";
 		if (idAssoc > 0){
-			filtre += " AND u.idAssociation = "+ idAssoc +" ";
+			filtre += " AND "+DB.Utilisateurs.alias+".idAssociation = "+ idAssoc;
+			
 		}
 		if (idType > 0) {
-			filtre += " AND u.idType = "+ idType +" ";
+			filtre += " AND "+DB.Utilisateurs.alias+".idType = "+ idType;
 		}
 		if (Utilities.isNullOrEmptyString(OrderBy)){
 			filtre += OrderBy;
@@ -32,7 +34,7 @@ public class UserMetier {
 		User u = new User ();
 		String filtre = "";
 		if (id > 0){
-			filtre += " AND u.id = "+id+" ";
+			filtre += " AND "+DB.Utilisateurs.alias+".id = "+id;
 		}
 		
 		try {
