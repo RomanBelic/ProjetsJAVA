@@ -18,7 +18,7 @@ public class DB {
 	
 	public static String MakeJoin (String JoinType, Table Table1, Table Table2, String idKey1, String idKey2) {
 		String str = " " + JoinType.toUpperCase() + " JOIN " + Table2 + " " + Table2.alias + " ON " +
-			               Table1.alias + "." + idKey1 + "="+Table2.alias + "." + idKey2 + " WHERE 1=1 ";
+			               Table1.alias + "." + idKey1 + "="+Table2.alias + "." + idKey2 + " ";
 		
 		return str;
 	}
@@ -38,7 +38,7 @@ public class DB {
 	
 	public static class Queries {
 		
-		public static final String GetUserQuery =
+		/*public static final String GetUserQuery =
 				   " Select u.nomUtilisateur, u.prenomUtilisateur, " +
 				   " u.adrUtilisateur, u.telUtilisateur, " + 
 				   " u.idAssociation, u.idType, u.id as IdUser, " + 
@@ -50,7 +50,23 @@ public class DB {
 				   " Where 1=1 ";
 		
 		public static final String GetLoginPassQuery = 
-			       "Select Login, MDP From " + Tables.Authentification + " Where Login = ? and MDP = ? ";
+			       "Select Login, MDP From " + Tables.Authentification + " Where Login = ? and MDP = ? ";*/
+		public static final String GetUserQuery = 
+				" SELECT u.nomUtilisateur, u.prenomUtilisateur," +
+		        " u.adrUtilisateur, u.telUtilisateur," +
+				" u.idAssociation, u.idType, u.id," + 
+		        " t.Libelle," + 
+				" a.LibelleAssociation" + 
+		        " FROM " +Utilisateurs+" "+Utilisateurs.alias +
+				" "+MakeJoin("INNER", Utilisateurs, TypeUtilisateurs, "idType", "id") +
+				" "+MakeJoin("INNER", Utilisateurs, Association, "idAssociation", "id") +
+				" Where 1=1 ";
+		        
+				
+				
+		
+		
+		
 	}
 	
 

@@ -49,6 +49,7 @@ public class ReqMetier {
 					st.setString(entry.getKey(), entry.getValue());
 				}
 			}
+			
 			rows = st.executeUpdate();
 		} catch (Exception e) {
 			e.getMessage();
@@ -176,42 +177,6 @@ public class ReqMetier {
 		}
 		return rows;
 	}
-	
-	public static int ExecutePreparedUpdate2Beta(String req, HashMap<Integer, ?> params) {
-		int rows = 0;
-		Connection con = null;
-		PreparedStatement st = null;
-		try {
-			con = Connexion.getConnection();
-			st = con.prepareStatement(req);
-			if (params.size() > 0) {
-				for (Map.Entry<Integer, ?> entry : params.entrySet()) {
-					if (entry.getValue() instanceof String) {					
-					    st.setString(entry.getKey(), (String) entry.getValue());
-					}
-					if (entry.getValue() instanceof Integer){
-						st.setInt(entry.getKey(), (Integer) entry.getValue());
-					}
-				}
-			}
-			rows = st.executeUpdate();
-		} catch (Exception e) {
-			e.getMessage();
-			e.printStackTrace();
-		}
-		try {
-			if (st != null)
-				st.close();
-			if (con != null)
-				con.close();
-		} catch (Exception e) {
-		}
-		return rows;
-	}
-	
-	
-	
-	
 	
 	//TODO
 	public static void ExecuteSelect (String req) {
