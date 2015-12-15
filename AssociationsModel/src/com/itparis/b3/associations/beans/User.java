@@ -1,5 +1,8 @@
 package com.itparis.b3.associations.beans;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class User {
 	
 	private int    id;
@@ -8,12 +11,12 @@ public class User {
 	private String Adresse;
 	private String Telephone;
 	
-	public Association assoc;
-	public TypeUser    type;
+	public List<Association> lstAssoc;
+	public TypeUser type;
 	
 	public User () {
 		type = new TypeUser ();
-		assoc = new Association();
+		lstAssoc = new ArrayList<Association>();
 	}
 	
 	public String getNom() {

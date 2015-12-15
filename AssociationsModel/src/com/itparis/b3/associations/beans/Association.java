@@ -1,8 +1,11 @@
 package com.itparis.b3.associations.beans;
 
 public class Association {
+	
 	private int    id;
 	private String Libelle;
+	
+	public AssociationDesc desc;
 	
 	public int getId() {
 		return id;

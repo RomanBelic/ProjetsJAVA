@@ -8,6 +8,7 @@ import com.itparis.b3.associations.beans.User;
 import com.itparis.b3.associations.common.DB;
 import com.itparis.b3.associations.common.ReqMetier;
 import com.itparis.b3.associations.common.Table;
+import com.itparis.b3.associations.common.Table.UserTable;
 import com.itparis.b3.associations.common.Utilities;
 import com.itparis.b3.associations.metier.UserMetier;
 
@@ -17,6 +18,13 @@ public class TestQueries {
 		
 		System.out.println(DB.Utilisateurs);
 		System.out.println(DB.MakeJoin("inner", DB.Utilisateurs, DB.TypeUtilisateurs, "idType", "id"));
+		
+	
+		
+		
+		
+		
+		
 
 	}
 }

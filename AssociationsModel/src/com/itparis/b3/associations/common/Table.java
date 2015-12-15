@@ -3,7 +3,7 @@ package com.itparis.b3.associations.common;
 public abstract class Table {
 	
 	private final String name;
-	public  final String alias;
+	protected final String alias;
 	
 	public  Table (String name, String alias) {
 		this.name = name;

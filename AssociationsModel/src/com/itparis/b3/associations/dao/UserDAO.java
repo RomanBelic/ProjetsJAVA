@@ -3,8 +3,9 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.List;
 
-import com.itparis.b3.associations.beans.User;
+import com.itparis.b3.associations.beans.*;
 import com.itparis.b3.associations.bin.Connexion;
 import com.itparis.b3.associations.common.DB.*;
 
@@ -12,6 +13,7 @@ public class UserDAO {
 	
 	private User RemplirUser (ResultSet rs){
 		User u = new User ();
+		Association a = new Association ();
 		try {
 	        u.setId(rs.getInt("id"));
 	        u.setAdresse(rs.getString("adrUtilisateur"));
@@ -20,8 +22,10 @@ public class UserDAO {
 	        u.setPrenom(rs.getString("prenomUtilisateur"));
 	        u.type.setId(rs.getInt("idType"));
 	        u.type.setLibelle(rs.getString("Libelle")); 
-	        u.assoc.setId(rs.getInt("idAssociation")); 
-	        u.assoc.setLibelle(rs.getString("LibelleAssociation")); 
+	        a.setLibelle(rs.getString("LibelleAssociation"));
+	        a.setId(rs.getInt("idAssociation"));
+	        
+	        u.lstAssoc.add(a);
 		}
 		catch (Exception e){
 			e.getMessage();
