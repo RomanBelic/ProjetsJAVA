@@ -6,8 +6,6 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 import com.itparis.b3.associations.beans.Association;
-import com.itparis.b3.associations.beans.AssociationDesc;
-import com.itparis.b3.associations.beans.User;
 import com.itparis.b3.associations.bin.Connexion;
 import com.itparis.b3.associations.common.DB.Queries;
 
@@ -20,7 +18,6 @@ public class AssociationDAO {
             a.setId(rs.getInt("id"));
             a.setLibelle(rs.getString("LibelleAssociation"));
 	        a.desc.setId(rs.getInt("idDesc"));
-	        a.desc.setIdAssociation(rs.getInt("idAssociation"));
 	        a.desc.setIdPresident(rs.getInt("idPresident"));
 	        a.desc.setNbParticipant(rs.getInt("nbParticipant"));;
 	        a.desc.setNomAssoc(rs.getString("nomAssoc"));

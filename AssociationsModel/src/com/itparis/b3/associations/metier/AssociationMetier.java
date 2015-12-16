@@ -9,7 +9,7 @@ import com.itparis.b3.associations.dao.AssociationDAO;
 
 public class AssociationMetier {
 	
-	public static ArrayList<Association> getAssociations (String nomAssoc){
+	public static ArrayList<Association> getAssociations (String nomAssoc, String OrderBy){
 		ArrayList<Association>lstAssoc = new ArrayList <Association> ();
 		String filtre = "";
 		/*if (id > 0)
@@ -20,6 +20,10 @@ public class AssociationMetier {
 		{
 			filtre += " AND " +DB.AssociationDesc.alias+".nomAssoc LIKE '%"+ nomAssoc+"%'";
 		}
+		if (!Utilities.isNullOrEmptyString(OrderBy)){
+			filtre += " ORDER BY "+OrderBy;
+		}
+		
 		try {
 			lstAssoc = AssociationDAO.class.newInstance().getListAssociation(filtre);
 		} catch (InstantiationException | IllegalAccessException e) {}

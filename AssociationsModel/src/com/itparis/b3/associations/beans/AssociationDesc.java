@@ -3,7 +3,6 @@ package com.itparis.b3.associations.beans;
 public class AssociationDesc {
 
 	private int    id;
-	private int    idAssociation;
 	private int    idPresident;
 	private int    nbParticipant;
 	private String nomAssoc;
@@ -14,12 +13,6 @@ public class AssociationDesc {
 	}
 	public void setId(int id) {
 		this.id = id;
-	}
-	public int getIdAssociation() {
-		return idAssociation;
-	}
-	public void setIdAssociation(int idAssociation) {
-		this.idAssociation = idAssociation;
 	}
 	public int getIdPresident() {
 		return idPresident;

@@ -30,8 +30,8 @@ public class DB {
 		        " "+TypeUtilisateurs.alias+".Libelle," + 
 				" "+Association.alias+".LibelleAssociation" + 
 		        " FROM " +Utilisateurs+" "+Utilisateurs.alias +
-				" "+MakeJoin("INNER", Utilisateurs, TypeUtilisateurs, "idType", "id") +
-				" "+MakeJoin("INNER", Utilisateurs, Association, "idAssociation", "id") +
+				" "+MakeJoin("LEFT", Utilisateurs, TypeUtilisateurs, "idType", "id") +
+				" "+MakeJoin("LEFT", Utilisateurs, Association, "idAssociation", "id") +
 				" Where 1=1 ";
 		
 		public static final String GetLoginPassQuery = 
@@ -39,11 +39,11 @@ public class DB {
 		
         public static final String GetAssociationQuery = 
         		" Select "+Association.alias+".id, "+Association.alias+".LibelleAssociation," +
-                " "+AssociationDesc.alias+ ".id as idDesc, "+AssociationDesc.alias+ ".idAssociation,"+
+                " "+AssociationDesc.alias+ ".id as idDesc,"+
                 " "+AssociationDesc.alias+ ".idPresident,"+AssociationDesc.alias+ ".nomAssoc,"+
                 " "+AssociationDesc.alias+ ".nbParticipant,"+AssociationDesc.alias+ ".Description"+
         		" FROM "+Association+" "+Association.alias +
-        		" "+MakeJoin("INNER", Association, AssociationDesc, "id", "idAssociation") +
+        		" "+MakeJoin("LEFT", Association, AssociationDesc, "id", "idAssociation") +
         		" Where 1=1 " ;
         	
 				

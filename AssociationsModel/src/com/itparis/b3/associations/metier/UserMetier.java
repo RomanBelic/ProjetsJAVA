@@ -19,8 +19,8 @@ public class UserMetier {
 		if (idType > 0) {
 			filtre += " AND "+DB.Utilisateurs.alias+".idType = "+ idType;
 		}
-		if (Utilities.isNullOrEmptyString(OrderBy)){
-			filtre += OrderBy;
+		if (!Utilities.isNullOrEmptyString(OrderBy)){
+			filtre += " ORDER BY "+OrderBy;
 		}
 
 		try {
