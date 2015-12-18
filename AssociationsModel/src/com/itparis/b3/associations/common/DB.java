@@ -46,11 +46,37 @@ public class DB {
         		" "+MakeJoin("LEFT", Association, AssociationDesc, "id", "idAssociation") +
         		" Where 1=1 " ;
         	
+		public static final String GetUserData = 
+				" Select idUtilisateur, Login, MDP From " + Authentification + " Where Login = ? and MDP = ? ";
 				
-				
+		public static final String GetEvent = 
+				" Select "+AssociationEvents.alias+".id,"+AssociationEvents.alias+".dateEvent," +
+		        " "+AssociationEvents.alias+".LibelleEvent, "+AssociationEvents.alias+".descriptionEvent," +
+		        " "+AssociationEvents.alias+".nbParticipant,"+AssociationEvents.alias+".idAssociation" +
+		        " FROM "+AssociationEvents+" "+AssociationEvents.alias+" WHERE 1=1 ";
 		
+		public static final String GetEventParticipant = 
+				" Select "+ParticipantEvents.alias+".idAssociation,"+ParticipantEvents.alias+".idUtilisateur,"+
+				" "+ParticipantEvents.alias+".Presence,"+ParticipantEvents.alias+".idEvenement,"+
+				" "+Utilisateurs.alias+".nomUtilisateur,"+Utilisateurs.alias+".prenomUtilisateur,"+
+				" "+TypeUtilisateurs.alias+".Libelle"+
+				" FROM "+ParticipantEvents+" "+ParticipantEvents.alias +
+				" "+MakeJoin("LEFT", ParticipantEvents, Utilisateurs, "idUtilisateur", "id") +
+				" "+MakeJoin("LEFT", Utilisateurs, TypeUtilisateurs, "idType", "id") +
+				" WHERE 1=1 ";
 		
-		
+		public static final String GetFicheParticipant =
+				" Select "+FicheParticipant.alias+".id,"+FicheParticipant.alias+".idUtilisateur,"+
+				" "+FicheParticipant.alias+".idAssociation,"+FicheParticipant.alias+".dateInscription,"+
+				" "+FicheParticipant.alias+".dateDesinscription,"+FicheParticipant.alias+".Notes,"+
+				" "+FicheParticipant.alias+".Anciennete,"+
+				" "+Utilisateurs.alias+".nomUtilisateur, "+Utilisateurs.alias+".prenomUtilisateur," +
+		        " "+Utilisateurs.alias+".adrUtilisateur, "+Utilisateurs.alias+".telUtilisateur," +
+		        " "+TypeUtilisateurs.alias+".Libelle"+
+				" FROM "+FicheParticipant+" "+FicheParticipant.alias+
+				" "+MakeJoin("LEFT", FicheParticipant, Utilisateurs, "idUtilisateur", "id")+
+				" "+MakeJoin("LEFT", Utilisateurs, TypeUtilisateurs, "idType", "id")+
+				" WHERE 1=1 ";
 	}
 	
 

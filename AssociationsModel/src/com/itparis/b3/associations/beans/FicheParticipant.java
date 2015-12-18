@@ -10,6 +10,12 @@ public class FicheParticipant {
 	private String dateDesinscription;
 	private String notes;
 	
+	public User utilisateur;
+	
+	public FicheParticipant () {
+		utilisateur = new User ();
+	}
+	
 	public int getId() {
 		return id;
 	}
@@ -51,9 +57,5 @@ public class FicheParticipant {
 	}
 	public void setNotes(String notes) {
 		this.notes = notes;
-	}
-
-	
-	
-	
+	}	
 }

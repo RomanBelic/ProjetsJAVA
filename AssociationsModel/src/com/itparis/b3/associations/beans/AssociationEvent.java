@@ -1,5 +1,8 @@
 package com.itparis.b3.associations.beans;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class AssociationEvent {
 	
 	private int    id;
@@ -8,6 +11,12 @@ public class AssociationEvent {
     private String dateEvent;
     private String libelleEvent;
     private String descEvent;
+    
+    public List<ParticipantEvents> lstParticipant;
+    
+    public AssociationEvent () {
+    	lstParticipant = new ArrayList<ParticipantEvents>();
+    }
     
 	public int getId() {
 		return id;

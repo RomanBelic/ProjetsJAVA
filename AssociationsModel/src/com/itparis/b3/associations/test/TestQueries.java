@@ -6,9 +6,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.itparis.b3.associations.beans.Association;
+import com.itparis.b3.associations.beans.AssociationEvent;
+import com.itparis.b3.associations.beans.FicheParticipant;
+import com.itparis.b3.associations.beans.ParticipantEvents;
 import com.itparis.b3.associations.beans.User;
+import com.itparis.b3.associations.common.DB;
 import com.itparis.b3.associations.common.Utilities;
 import com.itparis.b3.associations.metier.AssociationMetier;
+import com.itparis.b3.associations.metier.EventMetier;
 import com.itparis.b3.associations.metier.UserMetier;
 
 public class TestQueries {
@@ -16,22 +21,24 @@ public class TestQueries {
 	private TestInterface frame;
 	private List <Association> lstAssoc;
 	private List <User> lstUser;
+	private List <AssociationEvent> lstAevent;
+	private List <ParticipantEvents> lstPe;
+	private List <FicheParticipant> lstfiche;
 	
-	
-    
 	public TestQueries () {
 		frame = new TestInterface ();
 		lstAssoc  = new ArrayList <Association> ();
 		lstUser = new ArrayList <User> ();
+		lstAevent = new ArrayList<AssociationEvent> ();
+		lstPe = new ArrayList <ParticipantEvents> ();
+		lstfiche = new ArrayList<FicheParticipant> ();
 	}
 	
 	public static void main (String[] args) {
 		TestQueries t = new TestQueries ();
 		t.frame.setVisible(true);
 		t.FillData();
-		//t.SetActionButton1();
-		t.frame.button1.addActionListener(t.SetActionButton1());
-
+		t.SetActionButton1();
 	}
 	
 	protected  ActionListener SetActionButton1() {
@@ -55,13 +62,16 @@ public class TestQueries {
                }
 			}
 		};
+		frame.button1.addActionListener(l);
 		return l;
-		//frame.button1.addActionListener(l);
 	}
 	
 	protected void FillData () {
-		lstAssoc = AssociationMetier.getAssociations("bd","");
-		lstUser = UserMetier.getUsers(1, 2, "");
+		lstAssoc = AssociationMetier.getListAssociations("bd","");
+		lstUser = UserMetier.getListUsers(1, 0, "");
+		lstAevent = EventMetier.getListAssociationEvents(1, "", "", "");
+		lstPe =  EventMetier.getListParticipantEvents(1, 1, "asd", "");
+		lstfiche = UserMetier.getListFicheParticipant(1, 0, 0, "", "");
 	}
 	
 	

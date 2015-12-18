@@ -1,6 +1,5 @@
 package com.itparis.b3.associations.test;
 
-import java.awt.Event;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -9,9 +8,6 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.JComboBox;
 import javax.swing.JTextPane;
 import javax.swing.JButton;
-
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
 
 public class TestInterface extends JFrame {
 

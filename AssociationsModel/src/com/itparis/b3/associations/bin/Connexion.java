@@ -28,7 +28,9 @@ public final class Connexion  {
 	{
     	Connection con = null;
         try {
-            con = DriverManager.getConnection(driver + "//" + host + "/" + db , log, pass);
+            con = DriverManager.getConnection(driver + "//" + host + "/" + db +
+            		"?zeroDateTimeBehavior=convertToNull&autoReconnect=true&characterEncoding=UTF-8&characterSetResults=UTF-8"
+            		, log, pass);
         }
         catch (Exception e)
         {

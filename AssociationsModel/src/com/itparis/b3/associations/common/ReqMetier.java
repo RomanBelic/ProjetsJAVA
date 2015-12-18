@@ -2,12 +2,8 @@ package com.itparis.b3.associations.common;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import com.itparis.b3.associations.bin.Connexion;
@@ -34,8 +30,7 @@ public class ReqMetier {
 		return rows;
 	}
 
-	public static int ExecutePreparedUpdate(String req,
-			HashMap<Integer, String> params) {
+	public static int ExecutePreparedUpdate(String req, HashMap<Integer, String> params) {
 		int rows = 0;
 		Connection con = null;
 		PreparedStatement st = null;
@@ -168,36 +163,4 @@ public class ReqMetier {
 		return rows;
 	}
 	
-	//TODO
-	public static void ExecuteSelect (String req) {
-		Connection con = null;
-		Statement st = null;
-		ResultSet rs = null;
-		List <String> lst;
-		int i = 0;
-		try {
-			lst = new ArrayList<String> ();
-			con = Connexion.getConnection();
-			st = con.createStatement();
-			rs = st.executeQuery(req);
-				while (rs.next()){
-				i++;	
-				String s = rs.getString(1);
-				lst.add(s);
-				}
-				
-		} catch (SQLException e) {
-			e.printStackTrace();
-			e.getMessage();
-		}
-		try {
-			if (rs != null) rs.close();
-			if (st != null) st.close();
-			if (con != null)con.close();
-		} catch (Exception e) {
-		}
-	}
-	
-	
-
 }
