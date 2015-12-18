@@ -10,6 +10,8 @@ public final class Connexion  {
 	private static final String db = "dbassociations";
 	private static final String driver = "jdbc:mysql:";
 	private static final String driverClass = "com.mysql.jdbc.Driver";
+	private static final String DriverConfig = "?zeroDateTimeBehavior=convertToNull&autoReconnect=true&"
+			                                   + "characterEncoding=UTF-8&characterSetResults=UTF-8";
 	
 	private static Connexion instance = new Connexion();
  
@@ -28,9 +30,7 @@ public final class Connexion  {
 	{
     	Connection con = null;
         try {
-            con = DriverManager.getConnection(driver + "//" + host + "/" + db +
-            		"?zeroDateTimeBehavior=convertToNull&autoReconnect=true&characterEncoding=UTF-8&characterSetResults=UTF-8"
-            		, log, pass);
+            con = DriverManager.getConnection(driver + "//" + host + "/" + db + DriverConfig, log, pass);
         }
         catch (Exception e)
         {

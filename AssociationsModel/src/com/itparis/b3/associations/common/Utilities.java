@@ -2,6 +2,7 @@ package com.itparis.b3.associations.common;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Base64;
 import java.util.Date;
 import java.util.List;
 
@@ -59,6 +60,15 @@ public class Utilities {
 		return false;
 	}
 	
+	public static String encodeStringTo64Base (String str) {
+		byte[] bytesEncoded = Base64.getEncoder().encode(str.getBytes());
+        return new String(bytesEncoded);
+	}
+	
+	public static String decodeStringFrom64Base (String str) {
+		byte[] valueDecoded = Base64.getDecoder().decode(str);
+		return new String (valueDecoded);
+	}
 	
 	
 

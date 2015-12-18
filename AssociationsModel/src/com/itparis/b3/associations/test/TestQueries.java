@@ -2,6 +2,7 @@ package com.itparis.b3.associations.test;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,7 +11,6 @@ import com.itparis.b3.associations.beans.AssociationEvent;
 import com.itparis.b3.associations.beans.FicheParticipant;
 import com.itparis.b3.associations.beans.ParticipantEvents;
 import com.itparis.b3.associations.beans.User;
-import com.itparis.b3.associations.common.DB;
 import com.itparis.b3.associations.common.Utilities;
 import com.itparis.b3.associations.metier.AssociationMetier;
 import com.itparis.b3.associations.metier.EventMetier;
@@ -34,7 +34,7 @@ public class TestQueries {
 		lstfiche = new ArrayList<FicheParticipant> ();
 	}
 	
-	public static void main (String[] args) {
+	public static void main (String[] args) throws UnsupportedEncodingException {
 		TestQueries t = new TestQueries ();
 		t.frame.setVisible(true);
 		t.FillData();
@@ -71,9 +71,10 @@ public class TestQueries {
 		lstUser = UserMetier.getListUsers(1, 0, "");
 		lstAevent = EventMetier.getListAssociationEvents(1, "", "", "");
 		lstPe =  EventMetier.getListParticipantEvents(1, 1, "asd", "");
-		lstfiche = UserMetier.getListFicheParticipant(1, 0, 0, "", "");
+		lstfiche = UserMetier.getListFicheParticipant(1, 0, 0, "", "");	
 	}
 	
+
 	
 	
 }
