@@ -11,6 +11,7 @@ import com.itparis.b3.associations.beans.AssociationEvent;
 import com.itparis.b3.associations.beans.FicheParticipant;
 import com.itparis.b3.associations.beans.ParticipantEvents;
 import com.itparis.b3.associations.beans.User;
+import com.itparis.b3.associations.common.DB.Queries;
 import com.itparis.b3.associations.common.Utilities;
 import com.itparis.b3.associations.metier.AssociationMetier;
 import com.itparis.b3.associations.metier.EventMetier;
@@ -67,11 +68,21 @@ public class TestQueries {
 	}
 	
 	protected void FillData () {
-		lstAssoc = AssociationMetier.getListAssociations("bd","");
+		lstAssoc = AssociationMetier.getListAssociations(0,"","");
 		lstUser = UserMetier.getListUsers(1, 0, "");
 		lstAevent = EventMetier.getListAssociationEvents(1, "", "", "");
-		lstPe =  EventMetier.getListParticipantEvents(1, 1, "asd", "");
-		lstfiche = UserMetier.getListFicheParticipant(1, 0, 0, "", "");	
+		lstPe =  EventMetier.getListParticipantEvents(1, 1, "", "");
+		lstfiche = UserMetier.getListFicheParticipant(0, 0, 0, "", "");	
+		
+	    
+	    System.out.println (Queries.GetAssociationQuery);
+	    System.out.println (Queries.GetEvent);
+	    System.out.println (Queries.GetEventParticipant);
+	    System.out.println (Queries.GetFicheParticipant);
+	    System.out.println (Queries.GetLoginPassQuery);
+	    System.out.println (Queries.GetUserData);
+	    System.out.println (Queries.GetUserQuery);
+		
 	}
 	
 

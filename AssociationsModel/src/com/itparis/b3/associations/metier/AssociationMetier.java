@@ -9,9 +9,14 @@ import com.itparis.b3.associations.dao.AssociationDAO;
 
 public class AssociationMetier {
 	
-	public static ArrayList<Association> getListAssociations (String nomAssoc, String OrderBy){
+	public static ArrayList<Association> getListAssociations (int idUser, String nomAssoc, String OrderBy){
 		ArrayList<Association>lstAssoc = new ArrayList <Association> ();
 		String filtre = "";
+		if (idUser > 0){
+			filtre += " AND "+DB.Association.alias+".id IN (Select "+DB.FicheParticipant.alias+".idAssociation "+
+					  " From "+DB.FicheParticipant+" "+DB.FicheParticipant.alias +
+					  " Where "+DB.FicheParticipant.alias+".idUtilisateur = "+idUser+")";
+		}
 		if (!Utilities.isNullOrEmptyString(nomAssoc))
 		{
 			filtre += " AND " +DB.AssociationDesc.alias+".nomAssoc LIKE '%"+ nomAssoc+"%'";

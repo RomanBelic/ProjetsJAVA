@@ -21,8 +21,6 @@ public class UserDAO {
 	        u.setPrenom(rs.getString("prenomUtilisateur"));
 	        u.type.setId(rs.getInt("idType"));
 	        u.type.setLibelle(rs.getString("Libelle")); 
-	        u.assoc.setLibelle(rs.getString("LibelleAssociation"));
-	        u.assoc.setId(rs.getInt("idAssociation"));
 		}
 		catch (Exception e){
 			e.getMessage();

@@ -14,7 +14,9 @@ public class UserMetier {
 		ArrayList<User> lstUser = new ArrayList<User>();
 		String filtre = "";
 		if (idAssoc > 0){
-			filtre += " AND "+DB.Utilisateurs.alias+".idAssociation = "+ idAssoc;
+			filtre += " AND "+DB.Utilisateurs.alias+".id IN (Select "+DB.FicheParticipant.alias+".idUtilisateur "+
+					  " From "+DB.FicheParticipant+" "+DB.FicheParticipant.alias +
+					  " Where "+DB.FicheParticipant.alias+".idAssociation = "+idAssoc+")";
 		}
 		if (idType > 0) {
 			filtre += " AND "+DB.Utilisateurs.alias+".idType = "+ idType;

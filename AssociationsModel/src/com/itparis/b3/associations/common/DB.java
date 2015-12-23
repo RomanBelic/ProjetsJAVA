@@ -26,12 +26,10 @@ public class DB {
 		public static final String GetUserQuery = 
 				" SELECT "+Utilisateurs.alias+".nomUtilisateur, "+Utilisateurs.alias+".prenomUtilisateur," +
 		        " "+Utilisateurs.alias+".adrUtilisateur, "+Utilisateurs.alias+".telUtilisateur," +
-				" "+Utilisateurs.alias+".idAssociation, "+Utilisateurs.alias+".idType, "+Utilisateurs.alias+".id," + 
-		        " "+TypeUtilisateurs.alias+".Libelle," + 
-				" "+Association.alias+".LibelleAssociation" + 
+				" "+Utilisateurs.alias+".idType, "+Utilisateurs.alias+".id," + 
+		        " "+TypeUtilisateurs.alias+".Libelle" + 
 		        " FROM " +Utilisateurs+" "+Utilisateurs.alias +
 				" "+MakeJoin("LEFT", Utilisateurs, TypeUtilisateurs, "idType", "id") +
-				" "+MakeJoin("LEFT", Utilisateurs, Association, "idAssociation", "id") +
 				" Where 1=1 ";
 		
 		public static final String GetLoginPassQuery = 
@@ -53,7 +51,8 @@ public class DB {
 				" Select "+AssociationEvents.alias+".id,"+AssociationEvents.alias+".dateEvent," +
 		        " "+AssociationEvents.alias+".LibelleEvent, "+AssociationEvents.alias+".descriptionEvent," +
 		        " "+AssociationEvents.alias+".nbParticipant,"+AssociationEvents.alias+".idAssociation" +
-		        " FROM "+AssociationEvents+" "+AssociationEvents.alias+" WHERE 1=1 ";
+		        " FROM "+AssociationEvents+" "+AssociationEvents.alias+
+		        " WHERE 1=1 ";
 		
 		public static final String GetEventParticipant = 
 				" Select "+ParticipantEvents.alias+".idAssociation,"+ParticipantEvents.alias+".idUtilisateur,"+
