@@ -47,15 +47,15 @@ public class EventMetier {
 		return ae;
 	}
 	
-	public static ArrayList<ParticipantEvents> getListParticipantEvents (int idAssoc, int idUser, String 
+	public static ArrayList<ParticipantEvents> getListParticipantEvents (int idAssoc, int idEvent, String 
 			                                                             UserName,String OrderBy) {
 		ArrayList <ParticipantEvents> lstParticipant = new ArrayList<ParticipantEvents>();
 		String filtre = "";
 		if (idAssoc > 0){
 		     filtre += " AND "+DB.ParticipantEvents.alias+".idAssociation = "+idAssoc;
 		}
-		if (idUser > 0){
-			 filtre += " AND "+DB.ParticipantEvents.alias+".idUtilisateur = "+idAssoc;
+		if (idEvent > 0){
+			 filtre += " AND "+DB.ParticipantEvents.alias+".idEvenement = "+idEvent;
 			}
 		if (!Utilities.isNullOrEmptyString(UserName)){
 			filtre += " AND " +DB.Utilisateurs.alias+".nomUtilisateur LIKE '"+ UserName+"'";
