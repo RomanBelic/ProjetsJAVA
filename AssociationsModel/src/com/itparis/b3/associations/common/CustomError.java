@@ -4,8 +4,9 @@ import java.util.Iterator;
 
 public class CustomError extends Exception implements Iterable<Throwable> {
 	
-	/**
-	 * 
+	/* Classe CustomError;
+	 * Pas encore implementee;
+	 * Sera utilisee dans la gestion d'erreurs personnelle
 	 */
 	private static final long serialVersionUID = 1L;
 	private int Code;

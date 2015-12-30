@@ -1,5 +1,14 @@
 package com.itparis.b3.associations.beans;
 
+/*
+ * Classe Association est un modele de donnees;
+ * Sert a representer les associations;
+ * Elle a la meme structure que la table "association" dans la BDD;
+ * Proprietes de la classe : 
+     - int id;
+     - String Libelle;
+     + AssociationDesc desc;
+ */
 public class Association {
 	
 	private int    id;

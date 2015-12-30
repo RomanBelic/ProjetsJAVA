@@ -1,6 +1,10 @@
 package com.itparis.b3.associations.common;
 import com.itparis.b3.associations.common.Table.*;
 
+/* Classe BD;
+ * Contient les Requetes parametrees
+ * */
+
 public class DB {
 	
 	public static final String DBNULLVALUE = "NULL";

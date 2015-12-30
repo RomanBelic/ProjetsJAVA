@@ -1,4 +1,18 @@
 package com.itparis.b3.associations.beans;
+/*
+ * Classe User est un modele de donnees;
+ * Sert a representer l'utilisateur;
+ * Elle a la meme structure que la table "utilisateurs" dans la BDD;
+ * Proprietes de la Classe : 
+	- int    id;
+	- String Nom;
+	- String Prenom;
+	- String Adresse;
+	- String Telephone;
+	
+	+ List<Association> assoc;
+	+ TypeUser type;
+ * */
 
 import java.util.ArrayList;
 import java.util.List;

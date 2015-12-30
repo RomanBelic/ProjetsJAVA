@@ -8,8 +8,13 @@ import java.util.Map;
 
 import com.itparis.b3.associations.bin.Connexion;
 
-public class ReqMetier {
+/*
+ * Classe ReqMetier;
+ * Contient des methdoes DAO parametrees;
+ * */
 
+public class ReqMetier {
+	
 	public static int ExecuteUpdate(String req) {
 		int rows = 0;
 		Connection con = null;
