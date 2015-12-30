@@ -24,6 +24,8 @@ public class User {
 	private String Prenom;
 	private String Adresse;
 	private String Telephone;
+	private int Statut;
+	private String StatutString;
 	
 	public List<Association> assoc;
 	public TypeUser type;
@@ -64,5 +66,33 @@ public class User {
 	public void setId(int idUser) {
 		this.id = idUser;
 	}
+
+	public int getStatut() {
+		return Statut;
+	}
+
+	public void setStatut(int statut) {
+		Statut = statut;
+	}
+
+	public String getStatutString() {
+		switch (Statut) {
+			case -1:
+				StatutString = "Inactif";
+		    	break;
+			case 0:
+				StatutString = "Desactivee";
+			    break;
+			case 1:
+				StatutString = "Actif";
+		     	break;
+		}
+		return StatutString;
+	}
+
+	public void setStatutString(String statutString) {
+		StatutString = statutString;
+	}
+	
 	
 }

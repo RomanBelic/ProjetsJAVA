@@ -34,7 +34,7 @@ public class DB {
 		        " "+TypeUtilisateurs.alias+".Libelle" + 
 		        " FROM " +Utilisateurs+" "+Utilisateurs.alias +
 				" "+MakeJoin("LEFT", Utilisateurs, TypeUtilisateurs, "idType", "id") +
-				" Where 1=1 ";
+				" Where 1=1 AND " +Utilisateurs.alias+".Statut = 1";
 		
 		public static final String GetLoginPassQuery = 
 				" Select Login, MDP From " + Authentification + " Where Login = ? and MDP = ? ";
@@ -80,10 +80,14 @@ public class DB {
 				" "+MakeJoin("LEFT", FicheParticipant, Utilisateurs, "idUtilisateur", "id")+
 				" "+MakeJoin("LEFT", Utilisateurs, TypeUtilisateurs, "idType", "id")+
 				" WHERE 1=1 ";
-	}
-	
+		
+		public static final String GetUserByStatusQuery = 
+				" SELECT "+Utilisateurs.alias+".nomUtilisateur, "+Utilisateurs.alias+".prenomUtilisateur," +
+				" "+Utilisateurs.alias+".id,"+Utilisateurs.alias+".Statut"+ 
+				" FROM " +Utilisateurs+" "+Utilisateurs.alias +
+				" Where 1=1 ";
 
-	
-	
-	
+		
+		
+	}
 }

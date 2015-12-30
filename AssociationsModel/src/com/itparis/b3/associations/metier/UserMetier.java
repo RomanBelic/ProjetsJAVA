@@ -81,5 +81,40 @@ public class UserMetier {
 		catch (InstantiationException | IllegalAccessException e) {}
 		return fp;
 		}
+	
+	public static ArrayList<User> getListUsersByStatus (int status, String userName, String OrderBy) {
+		ArrayList <User> lstUser = new ArrayList<User> ();
+		String filtre = "";
+        filtre += " AND " +DB.Utilisateurs.alias+".Statut ="+ status;
+		if (!Utilities.isNullOrEmptyString(userName)){
+			filtre += " AND "+DB.Utilisateurs.alias+".nomUtilisateur LIKE '"+userName+"'";
+		}
+        if (!Utilities.isNullOrEmptyString(OrderBy)){
+        	filtre += " ORDER BY "+OrderBy;
+        }
+		try {
+			lstUser = UserDAO.class.newInstance().getListUserByState(filtre);
+		}
+		catch (InstantiationException | IllegalAccessException e) {}
+		
+		
+		return lstUser;
+	}
+	
+	public static User getUserForAdmin (int id) {
+		User u = new User ();
+		String filtre = "";
+		if (id > 0){
+			filtre += " AND "+DB.Utilisateurs.alias+".id = "+id;
+		}
+		try {
+			u = UserDAO.class.newInstance().getUserSimple(filtre);
+		} 
+		catch (InstantiationException  | IllegalAccessException e) {}
+        return u;
+	}
+	
+	
+	
 
 }

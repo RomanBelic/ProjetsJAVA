@@ -10,12 +10,16 @@ public class UserDAOTest {
 
 	@Test
 	public void getObjectUserDAO() {
-     assertEquals(1, UserMetier.getUser(1).getId());
+        assertEquals(1, UserMetier.getUser(1).getId());
+     
+        assertEquals(1, UserMetier.getUserForAdmin(1).getStatut());
 	}
 
 	@Test
 	public void getListUserDAO() {
 		 assertEquals(4, UserMetier.getListUsers(0, 0, "").size());
+		 
+		 assertEquals(4, UserMetier.getListUsersByStatus(1, "","id").size());
 	}
 	
 	@Test
@@ -28,4 +32,5 @@ public class UserDAOTest {
 		 assertEquals(3, UserMetier.getListFicheParticipant(0, 0, 0, "", "").size());
 	}
 
+	
 }
