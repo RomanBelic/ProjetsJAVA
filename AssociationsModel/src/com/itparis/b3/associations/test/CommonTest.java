@@ -4,6 +4,7 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
+import com.itparis.b3.associations.common.ReqMetier;
 import com.itparis.b3.associations.common.Utilities;
 
 public class CommonTest {
