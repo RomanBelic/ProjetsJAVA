@@ -158,7 +158,7 @@ public class ReqMetier {
 		return rows;
 	}
 	
-	public static int  ExecuteBatch (List<String>lstQueries) {
+	public static int ExecuteBatch (List<String>lstQueries) {
 		Connection con = null;
 		Statement st = null;
 		int[] rowsArray = {0};
@@ -187,4 +187,5 @@ public class ReqMetier {
 		} catch (Exception e) {}	
 		return rows;
 	}
+
 }
