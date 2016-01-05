@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import com.itparis.b3.associations.beans.Association;
 import com.itparis.b3.associations.bin.Connexion;
 import com.itparis.b3.associations.common.DB.Queries;
+import com.itparis.b3.associations.common.Utilities;
 
 public class AssociationDAO {
 	
@@ -28,7 +29,7 @@ public class AssociationDAO {
 			e.printStackTrace();
 		}
 		return a;
-	}
+	} 
 
 	public ArrayList<Association> getListAssociation (String filtre) {
 		Connection con = null;
@@ -50,6 +51,9 @@ public class AssociationDAO {
 		catch (Exception e){
 			e.getMessage();
 			e.printStackTrace();
+		    Association a = new Association ();
+		    a.setId(-1);
+			lstAssoc.add(a);
 		}
 	    try {
 	    	if (rs != null) rs.close();
@@ -81,6 +85,7 @@ public class AssociationDAO {
 		catch (Exception e){
 			e.getMessage();
 			e.printStackTrace();
+		    Utilities.errObject(a);
 		}
 	    try {
 	    	if (rs != null) rs.close();

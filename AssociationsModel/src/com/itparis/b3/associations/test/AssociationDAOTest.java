@@ -21,7 +21,7 @@ public class AssociationDAOTest {
 		    assertEquals(1 ,AssociationMetier.getAssociation(1).getId());
 		}
 		
-		@Test
+	    @Test
 		public void getListAssociationDAO() {
 		    assertEquals(2 ,AssociationMetier.getListAssociations(0, "", "").size());
 		}

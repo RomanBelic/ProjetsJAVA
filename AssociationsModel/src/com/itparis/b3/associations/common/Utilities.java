@@ -6,6 +6,11 @@ import java.util.Base64;
 import java.util.Date;
 import java.util.List;
 
+import com.itparis.b3.associations.beans.Association;
+import com.itparis.b3.associations.beans.AssociationEvent;
+import com.itparis.b3.associations.beans.Authentification;
+import com.itparis.b3.associations.beans.User;
+
 public class Utilities {
 	
 	public static String ConvertDBDateToFRDate (String dateString, char delimiter) {
@@ -68,6 +73,33 @@ public class Utilities {
 	public static String decodeStringFrom64Base (String str) {
 		byte[] valueDecoded = Base64.getDecoder().decode(str);
 		return new String (valueDecoded);
+	}
+	
+	public static Object errObject (Object o) {
+		int errCode = -1;
+		Object errObj = new Object ();
+		
+		if (o instanceof Association){
+			((Association) o).setId(errCode);
+		}
+		if (o instanceof User){
+			User u = new User();
+			u.setId(errCode);
+			errObj = u;
+		}
+		if (o instanceof AssociationEvent){
+			AssociationEvent e = new AssociationEvent();
+			e.setId(errCode);
+			errObj = e;
+		}
+		if (o instanceof Authentification){
+			Authentification auth = new Authentification();
+			auth.setLog(errCode+"");
+			auth.setIdUser(errCode);
+			errObj = auth;
+		}
+		
+		return errObj;
 	}
 	
 	
