@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 
 import com.itparis.b3.associations.beans.Authentification;
 import com.itparis.b3.associations.bin.Connexion;
+import com.itparis.b3.associations.common.Utilities;
 import com.itparis.b3.associations.common.DB.*;
 
 public class AuthDAO {
@@ -63,6 +64,7 @@ public class AuthDAO {
 		catch (Exception e) {
 			e.getMessage();
 			e.printStackTrace();
+			Utilities.setError(auth);
 		}
 	    try {
 	    	if (rs != null) rs.close();

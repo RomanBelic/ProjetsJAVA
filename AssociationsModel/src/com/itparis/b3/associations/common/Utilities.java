@@ -6,6 +6,15 @@ import java.util.Base64;
 import java.util.Date;
 import java.util.List;
 
+import com.itparis.b3.associations.beans.Association;
+import com.itparis.b3.associations.beans.AssociationDesc;
+import com.itparis.b3.associations.beans.AssociationEvent;
+import com.itparis.b3.associations.beans.Authentification;
+import com.itparis.b3.associations.beans.FicheParticipant;
+import com.itparis.b3.associations.beans.ParticipantEvents;
+import com.itparis.b3.associations.beans.TypeUser;
+import com.itparis.b3.associations.beans.User;
+
 public class Utilities {
 	
 	public static String ConvertDBDateToFRDate (String dateString, char delimiter) {
@@ -68,6 +77,37 @@ public class Utilities {
 	public static String decodeStringFrom64Base (String str) {
 		byte[] valueDecoded = Base64.getDecoder().decode(str);
 		return new String (valueDecoded);
+	}
+	
+	public static void setError (Object o) {
+		int errCode = -1;
+		
+		if (o instanceof Association){
+		    ((Association) o).setId(errCode);
+		}
+		if (o instanceof User){
+            ((User) o).setId(errCode);
+		}
+		if (o instanceof AssociationEvent){
+		    ((AssociationEvent) o).setId(errCode);
+		}
+		if (o instanceof Authentification){
+			((Authentification)o).setLog(errCode+"");
+			((Authentification)o).setIdUser(errCode);
+		}
+		if (o instanceof FicheParticipant){
+			((FicheParticipant)o).setId(errCode);
+		}
+		if (o instanceof ParticipantEvents){
+			((ParticipantEvents)o).setIdUser(errCode);
+		}
+		if (o instanceof TypeUser){
+			((TypeUser)o).setId(errCode);
+		}
+		if (o instanceof AssociationDesc){
+			((AssociationDesc)o).setId(errCode);
+		}
+		
 	}
 	
 	

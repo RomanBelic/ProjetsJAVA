@@ -42,11 +42,8 @@ public class UserDAO {
 			e.getMessage();
 			e.printStackTrace();
 		}
-		
 		return u;
 	}
-	
-	
 	
 	private FicheParticipant RemplirFicheParticipant (ResultSet rs){
 		FicheParticipant fp = new FicheParticipant ();
@@ -83,7 +80,6 @@ public class UserDAO {
 			e.getMessage();
 			e.printStackTrace();
 		}
-		
 		return fp;
 	}
 	
@@ -108,6 +104,9 @@ public class UserDAO {
 	    catch (Exception e){
 			e.getMessage();
 			e.printStackTrace();
+			User u = new User();
+			Utilities.setError(u);
+			lstUser.add(u);
 	    }
 	    try {
 	    	if (rs != null) rs.close();
@@ -137,6 +136,7 @@ public class UserDAO {
 		catch (Exception e){
 			e.getMessage();
 			e.printStackTrace();
+			Utilities.setError(u);
 		}
 	    try {
 	    	if (rs != null) rs.close();
@@ -168,6 +168,9 @@ public class UserDAO {
 	    catch (Exception e){
 			e.getMessage();
 			e.printStackTrace();
+			FicheParticipant fp = new FicheParticipant();
+			Utilities.setError(fp);
+			lstFiche.add(fp);
 	    }
 	    try {
 	    	if (rs != null) rs.close();
@@ -198,6 +201,7 @@ public class UserDAO {
 	    catch (Exception e){
 			e.getMessage();
 			e.printStackTrace();
+			Utilities.setError(fp);
 	    }
 	    try {
 	    	if (rs != null) rs.close();
@@ -230,6 +234,9 @@ public class UserDAO {
 	    catch (Exception e){
 			e.getMessage();
 			e.printStackTrace();
+			User u = new User();
+			Utilities.setError(u);
+			lstUser.add(u);
 	    }
 	    try {
 	    	if (rs != null) rs.close();
@@ -260,6 +267,7 @@ public class UserDAO {
 	    catch (Exception e){
 			e.getMessage();
 			e.printStackTrace();
+			Utilities.setError(u);
 	    }
 	    try {
 	    	if (rs != null) rs.close();

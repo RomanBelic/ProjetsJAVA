@@ -2,17 +2,13 @@ package com.itparis.b3.associations.common;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.Statement;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
+
 import java.util.List;
 import java.util.Map;
 
-import com.itparis.b3.associations.beans.Association;
 import com.itparis.b3.associations.bin.Connexion;
-import com.mysql.jdbc.ResultSetMetaData;
 
 /*
  * Classe ReqMetier;
@@ -41,7 +37,7 @@ public class ReqMetier {
 		return rows;
 	}
 
-	public static int ExecutePreparedUpdate(String req, HashMap<Integer, String> params) {
+	public static int ExecutePreparedQuery(String req, HashMap<Integer, String> params) {
 		int rows = 0;
 		Connection con = null;
 		PreparedStatement st = null;
@@ -67,8 +63,7 @@ public class ReqMetier {
 		return rows;
 	}
 
-	public static int ExecuteParameteredUpdate(String table,HashMap<String, String> paramsTable,
-			                                   HashMap<String, String> paramsWhere) {
+	public static int ExecuteParameteredUpdate(String table,HashMap<String, String> paramsTable, String paramWhere) {
 		int rows = 0;
 		String req = "Update " + table + " SET ";
 		Connection con = null;
@@ -85,13 +80,8 @@ public class ReqMetier {
 				req = req.substring(0, index);
 			}
 
-			req += " Where 1=1 ";
+			req += " Where 1=1 " + paramWhere;
 
-			if (paramsWhere.size() > 0) {
-				for (Map.Entry<String, String> entry : paramsWhere.entrySet()) {
-					req += entry.getKey() + " " + entry.getValue() + " ";
-				}
-			}
 			rows = st.executeUpdate(req);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -105,7 +95,7 @@ public class ReqMetier {
 		return rows;
 	}
 
-	public static int ExecuteParameteredDelete(String table, HashMap<String, String> paramsWhere) {
+	public static int ExecuteParameteredDelete(String table, String paramWhere) {
 		int rows = 0;
 		String req = "Delete From " + table + " Where 1=1 ";
 		Connection con = null;
@@ -113,12 +103,8 @@ public class ReqMetier {
 		try {
 			con = Connexion.getConnection();
 			st = con.createStatement();
-
-			if (paramsWhere.size() > 0) {
-				for (Map.Entry<String, String> entry : paramsWhere.entrySet()) {
-					req += entry.getKey() + " " + entry.getValue() + " ";
-				}
-			}
+            req += paramWhere;
+			
 			rows = st.executeUpdate(req);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -169,9 +155,38 @@ public class ReqMetier {
 		try {
 			if (st != null) st.close();
 			if (con != null)con.close();
-		} catch (Exception e) {	
-		}
+		} catch (Exception e) {}
 		return rows;
 	}
 	
+	public static int ExecuteBatch (List<String>lstQueries) {
+		Connection con = null;
+		Statement st = null;
+		int[] rowsArray = {0};
+		int rows = 0;
+		try {
+			if (lstQueries.size() > 0){
+				con = Connexion.getConnection();
+				st = con.createStatement();
+			    for (String s : lstQueries){
+			    	st.addBatch(s);
+			    }
+				rowsArray = st.executeBatch();
+				
+				for (int i : rowsArray) {
+					rows += rowsArray [i];
+				}
+			}
+		}
+		catch (Exception e){
+			e.getMessage();
+			e.printStackTrace();
+		}
+		try {
+			if (st != null) st.close();
+			if (con != null)con.close();
+		} catch (Exception e) {}	
+		return rows;
+	}
+
 }

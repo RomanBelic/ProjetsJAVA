@@ -41,7 +41,7 @@ public class AssociationMetier {
 		try {
 			a = AssociationDAO.class.newInstance().getAssociation(filtre);
 		} 
-		catch (InstantiationException  | IllegalAccessException e) {}
+	    catch (IllegalAccessException | InstantiationException e) {}
         return a;
 	}
 	

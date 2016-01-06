@@ -16,7 +16,7 @@ public final class Connexion  {
 	private static final String driverClass = "com.mysql.jdbc.Driver";
 	private static final String dbparams = "?zeroDateTimeBehavior=convertToNull&autoReconnect=true&"
 			                                   + "characterEncoding=UTF-8&characterSetResults=UTF-8"
-			                                   + "&allowMultiQueries=true";
+                                               + "&allowMultiQueries=true";
 	
 	private static Connexion instance = new Connexion();
  

@@ -97,7 +97,6 @@ public class UserMetier {
 		}
 		catch (InstantiationException | IllegalAccessException e) {}
 		
-		
 		return lstUser;
 	}
 	
