@@ -3,8 +3,6 @@ package com.research.beans;
 import java.lang.reflect.Field;
 import java.util.HashMap;
 
-import com.research.generics.MyList;
-
 public abstract class Person {
 	
 	protected int id;
@@ -14,7 +12,7 @@ public abstract class Person {
 	protected int age;
 	protected int datebirth;
 	
-	private HashMap <String, Field> fMap = new HashMap <String,Field> ();
+	private static HashMap <String, Field> fMap = new HashMap <String,Field> ();
 	private Field [] fields = Person.class.getDeclaredFields();
 	
 	public Person () {
@@ -62,20 +60,11 @@ public abstract class Person {
 	
 	public abstract String toString();
 	
-	public Field getField (String Field) {
+	public static Field getField (String Field) {
 		if (fMap.containsKey(Field)) {
 			fMap.get(Field).setAccessible(true);
 			return fMap.get(Field);
 			}
 		else return null;
 	}
-	
-	@SuppressWarnings("unchecked")
-	public static void main (String [] args) throws IllegalArgumentException, IllegalAccessException {
-	
-		
-	}
-	
-	
-
 }

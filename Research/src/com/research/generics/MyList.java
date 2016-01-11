@@ -8,15 +8,16 @@ import java.util.RandomAccess;
 
 import com.research.genericsinterfaces.SearchableList;
 
-public class MyList <E> extends ArrayList <E> implements List<E>, RandomAccess, Cloneable, Serializable, SearchableList{
+public class MyList <E> extends ArrayList <E> implements List<E>, RandomAccess, 
+                                              Cloneable, Serializable, SearchableList{
 	
 	private static final long serialVersionUID = 1L;
 	private Field [] fields;
-	private MyList <Object> lstTemp; 
+	private ArrayList <Object> lstTemp; 
 	
     @Override
-	public  MyList <? extends Object> Where (Field f, Object value) {
-		//Field [] fields;
+	public ArrayList <? extends Object> Where (Field f, Object value) {
+    	
 		lstTemp =  new MyList <Object> ();
 		
 		try {
@@ -44,7 +45,7 @@ public class MyList <E> extends ArrayList <E> implements List<E>, RandomAccess, 
 				}	
 			}
 		}
-		catch (Exception e) {}
+		catch (Exception e) {e.getMessage();}
 		return lstTemp;
 	}
 
