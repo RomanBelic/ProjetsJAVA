@@ -49,7 +49,7 @@ public class MyList <E> extends ArrayList <E> implements List<E>, RandomAccess,
 			}
 			catch (Exception e) {e.getMessage();}
     	}
-		return this;
+		return lstTemp;
 	}
 
 	@Override
