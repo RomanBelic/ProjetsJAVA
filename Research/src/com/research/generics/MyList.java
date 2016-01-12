@@ -17,36 +17,39 @@ public class MyList <E> extends ArrayList <E> implements List<E>, RandomAccess,
 	
     @Override
 	public ArrayList <? extends Object> Where (Field f, Object value) {
+    
+    	lstTemp =  new MyList <Object> ();
     	
-		lstTemp =  new MyList <Object> ();
-		
-		try {
-			for (Object obj : this) {
-				
-	            if (obj.getClass().getSuperclass().isAssignableFrom(obj.getClass())) {
-	            	fields = obj.getClass().getSuperclass().getDeclaredFields();
-	            }
-	            else fields = obj.getClass().getDeclaredFields();
-	            
-				for (Field ftemp : fields) {
-					ftemp.setAccessible(true);
-					if (ftemp.equals(f)) {
-						
-            			if (f.get(obj) instanceof char[]){
-            				if (obj == value){
-            					lstTemp.add(obj);
-            				}
-            			}
-            			
-						if (ftemp.get(obj).equals(value)) {
-							lstTemp.add(obj);
+    	if (this != null) {
+			Object objReflect = this.get(0);
+			
+	        if (objReflect.getClass().getSuperclass().isAssignableFrom(objReflect.getClass())) {
+	        	fields = objReflect.getClass().getSuperclass().getDeclaredFields();
+	        }
+	        else fields = objReflect.getClass().getDeclaredFields();
+	
+			try {
+				for (Object obj : this) {
+					for (Field ftemp : fields) {
+						ftemp.setAccessible(true);
+						if (ftemp.equals(f)) {
+							
+	            			if (f.get(obj) instanceof char[]){
+	            				if (obj == value){
+	            					lstTemp.add(obj);
+	            				}
+	            			}
+	            			
+							if (ftemp.get(obj).equals(value)) {
+								lstTemp.add(obj);
+							}
 						}
-					}
-				}	
+					}	
+				}
 			}
-		}
-		catch (Exception e) {e.getMessage();}
-		return lstTemp;
+			catch (Exception e) {e.getMessage();}
+    	}
+		return this;
 	}
 
 	@Override
